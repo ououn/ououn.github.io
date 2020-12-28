@@ -1,9 +1,9 @@
 @import url(main.css);
 
 /* Font */
-	.ctmfont1 {
-		font-family: 'Nerko One', cursive;
-	}
+.ctmfont1 {font-family: 'Nerko One', cursive;}
+.ctmfont2 {font-family: 'Merriweather', serif;}
+.ctmfont3 {font-family: 'Fredoka One', cursive;}
 
 /* Wrapper */
 
