@@ -54,7 +54,7 @@ h4 {
   align-content: center;
   justify-content: center;
   height: auto;
-  min-height: 100vh;
+  min-height: 20vh;
   margin: 0 auto;
 }
 .sr-header {
@@ -357,7 +357,7 @@ pre {
 
 /* Pasha styles – Brand-overrides, can split these out */
 :root {
-  --accent-color: #ed5f74;
+  --accent-color: #7583ff;
   --headline-color: var(--accent-color);
   --logo-image: url("https://storage.googleapis.com/stripe-sample-images/logo-pasha.svg");
 }
@@ -475,13 +475,14 @@ pre {
   display: flex;
 }
 .container {
-  border: 1px solid #e8e8e8;
-  border-radius: 6px;
+  border: 3px hidden #505050;
+  border-radius: 12px;
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 500px;
   min-width: 250px;
+  margin-right: 0px;
 }
 
 .container .pasha-image-stack {
@@ -489,7 +490,8 @@ pre {
 }
 
 .container:first-of-type {
-  margin-right: 20px;
+  /*margin-left: 20px;
+  margin-right: 20px;*/
 }
 
 .quantity-setter {
