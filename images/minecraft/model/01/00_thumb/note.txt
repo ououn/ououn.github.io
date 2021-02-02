@@ -1,0 +1,11 @@
+551 x 310
+
+JPEG
+
+Scale Mode: scale down
+
+Quality High (8)
+
+naming format
+		origin_character name_number
+ex:	raid_dervish_01

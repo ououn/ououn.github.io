@@ -17,7 +17,7 @@
 	</head>
 
 	<!-- Javascript -->
-	<body class="is-preload">
+	<body class="is-preload" onload="startTimer()">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -46,15 +46,31 @@
 
 							<!-- random & descripption -->
 							<section class="posts">
-								<div class="row gtr-50 gtr-uniform">
+								<div class="row gtr-0-1 gtr-uniform">
+
+									<!--
 									<div class="col-4-5"><span class="image main">
 										<img src="../images/00_random_pick.png" alt="" id="random_change"
 										class="fresco" href="../images/00_random_pick.png" data-fresco-caption="" onclick="open_random()">
 									</span></div>
+									-->
+
+									<span class="image main">
+										<img src="../images/minecraft/model/01/00_thumb/raid_harvest_jack_01.jpg" alt="" id="auto_change"
+										class="fresco" href="../images/00_random_pick.png" data-fresco-caption="" onclick="open_currentAuto()">
+										
+										<!--
+										<button type="button" onclick="displayPreviousImage()">pre</button>
+										<button type="button" onclick="displayNextImage()">nex</button>
+										-->
+										
+									</span>
+
+
 								</div>
 								<section>
 									<header><h3 class="ctmfont3">chibi doll series</h3></header>
-									<p class="box ctmfont1">Begin as an idea of adding more decoration to the world. Style inspired by mobile pixel game Crusaders Quest and flash game Halfne Miku Studio.</p>
+									<p class="box ctmfont1">Begin as an idea of adding more decoration to the world. So it is designed to be a little bit smaller than the size of one block in game. Style inspired by mobile pixel game Crusaders Quest and flash game Halfne Miku Studio.</p>
 								</section>
 							</section>
 
@@ -64,18 +80,18 @@
 								<header class="major"><span class="date">VOCALOID</span></header>
 								<div class="row gtr-50 gtr-uniform">
 								   <!-- yowane haku -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/vocaloid/01_yowane_haku/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/vocaloid/01_yowane_haku/01_thumb.png" alt=""
 										 class="fresco" data-fresco-group="vocaloid_01" href="../images/minecraft/model/01/vocaloid/01_yowane_haku/02_model.png" data-fresco-caption="">
 										<span class="fresco" data-fresco-group="vocaloid_01" href="../images/minecraft/model/01/vocaloid/01_yowane_haku/versions.png"></spam>
 										<span class="fresco" data-fresco-group="vocaloid_01" href="../images/minecraft/model/01/vocaloid/01_yowane_haku/render_01.jpg"></span>
 									</span></div>
 									<!-- akita neru -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/vocaloid/02_akita_neru/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/vocaloid/02_akita_neru/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="vocaloid_02" href="../images/minecraft/model/01/vocaloid/02_akita_neru/02_model.png">
 										<!--<span class="fresco" data-fresco-group="vocaloid_02" href="../images/minecraft/model/01/vocaloid/02_akita_neru/01_thumb.png"></span>-->
 								   </span></div>
 								   <!-- hatsune miku -->
-								   <div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/vocaloid/03_hatsune_miku/01_thumb.png" alt=""
+								   <div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/vocaloid/03_hatsune_miku/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="vocaloid_03" href="../images/minecraft/model/01/vocaloid/03_hatsune_miku/02_model.png">
 										<!--<span class="fresco" data-fresco-group="vocaloid_03" href="../images/minecraft/model/01/vocaloid/02_akita_neru/01_thumb.png"></span>-->
 									</span></div>
@@ -85,12 +101,12 @@
 								<header class="major"><span class="date">JoJo's Bizarre Adventure</span></header>
 								<div class="row gtr-50 gtr-uniform">
 									<!-- higashikata josuke -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/jojo/02_higashikata_josuke/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/jojo/02_higashikata_josuke/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="jojo_02" href="../images/minecraft/model/01/jojo/02_higashikata_josuke/02_model.png">
 										<!--<span class="fresco" data-fresco-group="jojo_02" href="../images/minecraft/model/01/jojo/03_yoshikage_kira/render_01.jpg"></span>-->
 									</span></div>
 									<!-- yoshikage kira -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/jojo/03_yoshikage_kira/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/jojo/03_yoshikage_kira/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="jojo_03" href="../images/minecraft/model/01/jojo/03_yoshikage_kira/02_model.png">
 										<span class="fresco" data-fresco-group="jojo_03" href="../images/minecraft/model/01/jojo/03_yoshikage_kira/render_01.jpg"></span>
 									</span></div>
@@ -100,14 +116,14 @@
 								<header class="major"><span class="date">RAID: Shadow Legends</span></header>
 								<div class="row gtr-50 gtr-uniform">
 									<!-- dervish -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/raid/01_dervish/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/raid/01_dervish/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="raid_01" href="../images/minecraft/model/01/raid/01_dervish/02_model.png">
 										<span class="fresco" data-fresco-group="raid_01" href="../images/minecraft/model/01/raid/01_dervish/render_01.jpg"></span>
 										<span class="fresco" data-fresco-group="raid_01" href="../images/minecraft/model/01/raid/01_dervish/animated_01.gif"></span>
 										<span class="fresco" data-fresco-group="raid_01" href="../images/minecraft/model/01/raid/01_dervish/animated_02.gif"></span>
 								   </span></div>
 								   <!-- skytouched shaman -->
-								   <div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/raid/02_skytouched_shaman/01_thumb.png" alt=""
+								   <div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/raid/02_skytouched_shaman/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="raid_02" href="../images/minecraft/model/01/raid/02_skytouched_shaman/02_model.png">
 										<span class="fresco" data-fresco-group="raid_02" href="../images/minecraft/model/01/raid/02_skytouched_shaman/render_01.jpg" data-fresco-caption="Praise the sun~"></span>
 										<span class="fresco" data-fresco-group="raid_02" href="../images/minecraft/model/01/raid/02_skytouched_shaman/render_02.jpg"></span>
@@ -115,17 +131,17 @@
 										<span class="fresco" data-fresco-group="raid_02" href="../images/minecraft/model/01/raid/02_skytouched_shaman/animated_01.gif"></span>
 									</span></div>
 									<!-- vilespawn -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/raid/03_vilespawn/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/raid/03_vilespawn/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="raid_03" href="../images/minecraft/model/01/raid/03_vilespawn/02_model.png">
 										<span class="fresco" data-fresco-group="raid_03" href="../images/minecraft/model/01/raid/03_vilespawn/render_01.jpg" data-fresco-caption=""></span>
 									</span></div>
 									<!-- captain temila -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/raid/04_captain_temila/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/raid/04_captain_temila/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="raid_04" href="../images/minecraft/model/01/raid/04_captain_temila/02_model.png">
 										<!--<span class="fresco" data-fresco-group="raid_04" href="../images/minecraft/model/01/raid/03_vilespawn/render_01.jpg" data-fresco-caption=""></span>-->
 									</span></div>
 									<!-- harvest jack -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/raid/05_harvest_jack/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/raid/05_harvest_jack/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="raid_05" href="../images/minecraft/model/01/raid/05_harvest_jack/02_model.png">
 										<span class="fresco" data-fresco-group="raid_05" href="../images/minecraft/model/01/raid/05_harvest_jack/render_01.jpg" data-fresco-caption=""></span>
 									</span></div>
@@ -135,7 +151,7 @@
 								<header class="major"><span class="date">Player Skin</span></header>
 								<div class="row gtr-50 gtr-uniform">
 									<!-- loy loier -->
-									<div class="col-1-5"><span class="image fit"><img src="../images/minecraft/model/01/player_skin/01_loy_loier/01_thumb.png" alt=""
+									<div class="col-0-1"><span class="image fit"><img src="../images/minecraft/model/01/player_skin/01_loy_loier/01_thumb.png" alt=""
 										class="fresco" data-fresco-group="skin_01" href="../images/minecraft/model/01/player_skin/01_loy_loier/02_model.png">
 										<span class="fresco" data-fresco-group="skin_01" href="../images/minecraft/model/01/player_skin/01_loy_loier/02_model_alt.png" data-fresco-caption=""></span>
 										<span class="fresco" data-fresco-group="skin_01" href="../images/minecraft/model/01/player_skin/01_loy_loier/render_01.jpg" data-fresco-caption=""></span>
@@ -164,6 +180,7 @@
 			<script src="../assets/js/main.js"></script>
 			<script src="../assets/js/fresco.min.js"></script>
 			<script src="../assets/js/open_random.js"></script>
+			<script src="../assets/js/auto_change.js"></script>
 
 	</body>
 </html>
