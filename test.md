@@ -84,7 +84,7 @@
 - type —— 字体类型
 - sizes —— bin文件位置。该glyph_sizes.bin文件记录着字符的调整信息。部分unicode字体生成器会顺手生成此文件
 	- "minecraft:font/glyph_sizes.bin" 为例，则应有文件 assets/minecraft/font/glyph_sizes.bin
-- template —— png文件位置。%s将会自动识别为对应页码。存放位置以 assets/<[i]namespace[/i]>/textures/ 起
+- template —— png文件位置。%s将会自动识别为对应页码
 	- "minecraft:font/unicode_page_%s.png" 为例，则贴图文件应保存在 assets/minecraft/textures/font/ 下。 unicode_page_00,unicode_page_0a ... unicode_page_ff
 
 *建议直接修改原有的贴图，根本不需要来这里做改动<br>
