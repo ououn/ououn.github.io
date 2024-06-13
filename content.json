@@ -1,0 +1,449 @@
+[b]命令例子[/b][code]tellraw @a "\ue001\ue002"
+
+#1.13   论坛吞(转义)\，自行把/改为\
+summon armor_stand ~ ~ ~ {CustomName:"{/"text/":/"//ue001/"}",CustomNameVisible:1b}
+
+
+#1.14
+summon armor_stand ~ ~ ~ {CustomName:'{"text":"\\ue001"}',CustomNameVisible:1b}[/code]
+
+修改好的字体在应用上往往要做到贴图偏移甚至是重叠，而这原本是做不到的，直到一个字体相关的bug被发现(见后)...因此字体反向移动也就成为了一门必修课
+
+
+
+
+[page]
+[b][size=5]ascent、chars、height[/size][/b]
+[img=1645,610]https://s2.ax1x.com/2020/02/16/3pxLoq.png[/img]
+[img=1645,610]https://s2.ax1x.com/2020/02/16/3pxjYV.png[/img]
+[img=1645,671]https://s2.ax1x.com/2020/02/16/3pxXF0.png[/img]
+
+
+
+
+[page]
+[b][size=5]其实就是[s]（raw json在线教学）[/s]几个常用例子[/size][/b]
+
+
+
+
+其实嘛...懂的都懂，不懂的就看看吧，部分内容涉及到反向，也看看后面几页，希望能懂
+
+[b]Tellraw & Title[/b]
+[code]/tellraw @p "\ue001\ue002"
+/tellraw @p [{"text":"\ue001\ue002"}]
+/title @p title [{"text":"\ue001"}][/code]
+
+[b]Name/Lore[/b]
+[code]/give @p pufferfish{display:{Name:'{"text":"\\ue001"}',Lore:['{"text":"\\ue002"}']}} 1[/code]
+
+[b]CustomName[/b]
+[code]/summon pufferfish ~ ~ ~ {CustomNameVisible:1b,CustomName:'{"text":"\\ue001"}'}[/code]
+
+[b]箱子UI / 菜单栏[/b]
+[spoiler]全局性修改的话除了老办法直接糊箱子的贴图，也可以修改资源包lang文件夹下所有语言的该翻译词条，使该翻译带有先前自定义的字体字符。
+
+翻译词条的优点是可以使贴图超出原本箱子贴图以外的范围（菜单栏的修改同样使用该方法）
+下图为例，[b]\UF808[/b]为反向空格的偏移字段，此处作用为把文本打印起始点往左偏移8像素点。
+[b]§F[/b]则是为字体着白色，以维持后续字体的颜色。例如下面的Inventory默认就被糊了灰色。其他地方也会有为字体默认糊色的情况，比如书本内的字体会糊黑色，注意一下。
+最后的[b]\U002B[/b](自定义字符"+")就是此次显示的图片。
+[img]https://z3.ax1x.com/2021/11/26/oVno5V.png[/img]
+
+由于被命名的箱子在打开时左上角会显示其命名，因此可以做到特定箱子显示特定UI。
+[code]/give @s chest{display:{Name:'{"color":"white","text":"\\UF808\\u002B"}'}}
+/give @s chest{display:{Name:'[{"translate":"space.-8","color":"white"},"+"]'}}
+/give @s chest{display:{Name:'{"translate":"custom.container.chest"}'}}[/code]
+[/spoiler]
+
+[b]书[/b]
+待补充...
+
+
+[page]
+[b][size=5]添加多套字体[/size][/b]
+
+
+
+
+如前文提到，此 json 命名为其他时将视为一套非默认的字体。能在允许使用 raw json 的地方中指定调用其他字体
+font 在 raw json 中不指定时则会使用 minecraft:default，也就是默认的那一套字体
+
+
+json文件内容与前文无异。调用方面，以 assets\namespace\font\test.json 为例，在 raw json 部分则输入如下
+[code]{"text":"\ue001","font":"namespace:test"}[/code]
+
+
+或这样，前后文本使用默认字体，中间的文本将使用指定字体
+[code][{"text":"123"},{"text":"123","font":"namespace:test"},"123"][/code]
+
+
+又或这样，后文继承首段相应设置。除了末尾的文本，其他均使用自定义字体
+[code][{"text":"","font":"namespace:test"},"123",{"text":"456"},{"text":"789","font":"minecraft:default"}][/code]
+
+
+
+
+[page]
+[img]https://z3.ax1x.com/2021/05/04/gnXA2t.jpg[/img]
+
+
+
+
+[page]
+[b][size=5]图片的"纵向移动"[/size][/b]
+
+
+
+[img]https://z3.ax1x.com/2021/06/24/RQUZJH.png[/img]
+很遗憾，不如反向空格的横向移动，由于ascent不能高于height值，纵向(往更上)移动同一张贴图的唯一方法为，穷举。
+穷举任何需要的高度并用其他字符显示。
+如图，红色为原图大小，蓝色为把原图往上托高后的图片大小。
+如此修改后字符不就往上"移动"了吗？往下则通过减少ascent值得到。
+当然了这框是透明的。
+
+
+
+小拉达中用于表示不同高度的信号点例子...[spoiler][code]...
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":250,"height":300,"chars":["\u0250"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":251,"height":300,"chars":["\u0251"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":252,"height":300,"chars":["\u0252"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":253,"height":300,"chars":["\u0253"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":254,"height":300,"chars":["\u0254"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":255,"height":300,"chars":["\u0255"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":256,"height":300,"chars":["\u0256"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":257,"height":300,"chars":["\u0257"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":258,"height":300,"chars":["\u0258"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":259,"height":300,"chars":["\u0259"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":260,"height":300,"chars":["\u0260"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":261,"height":300,"chars":["\u0261"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":262,"height":300,"chars":["\u0262"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":263,"height":300,"chars":["\u0263"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":264,"height":300,"chars":["\u0264"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":265,"height":300,"chars":["\u0265"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":266,"height":300,"chars":["\u0266"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":267,"height":300,"chars":["\u0267"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":268,"height":300,"chars":["\u0268"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":269,"height":300,"chars":["\u0269"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":270,"height":300,"chars":["\u0270"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":271,"height":300,"chars":["\u0271"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":272,"height":300,"chars":["\u0272"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":273,"height":300,"chars":["\u0273"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":274,"height":300,"chars":["\u0274"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":275,"height":300,"chars":["\u0275"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":276,"height":300,"chars":["\u0276"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":277,"height":300,"chars":["\u0277"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":278,"height":300,"chars":["\u0278"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":279,"height":300,"chars":["\u0279"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":280,"height":300,"chars":["\u0280"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":281,"height":300,"chars":["\u0281"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":282,"height":300,"chars":["\u0282"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":283,"height":300,"chars":["\u0283"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":284,"height":300,"chars":["\u0284"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":285,"height":300,"chars":["\u0285"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":286,"height":300,"chars":["\u0286"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":287,"height":300,"chars":["\u0287"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":288,"height":300,"chars":["\u0288"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":289,"height":300,"chars":["\u0289"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":290,"height":300,"chars":["\u0290"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":291,"height":300,"chars":["\u0291"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":292,"height":300,"chars":["\u0292"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":293,"height":300,"chars":["\u0293"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":294,"height":300,"chars":["\u0294"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":295,"height":300,"chars":["\u0295"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":296,"height":300,"chars":["\u0296"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":297,"height":300,"chars":["\u0297"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":298,"height":300,"chars":["\u0298"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":299,"height":300,"chars":["\u0299"]},
+{"type":"bitmap","file":"uin:xradar/set1_dot.png","ascent":300,"height":300,"chars":["\u0300"]},
+...[/code]没什么特别的，我就是想秀一下...[/spoiler]
+
+
+
+
+[page]
+[b][size=5]代理对 surrogate pairs[/size][/b]
+
+
+
+简而言之就是位置不够，后来超过的字符就需要通过一对unicode来代表一个字符
+
+例 \u10437 则通过一对 \ud801\udc37 代表
+[code]{
+	"providers":[
+		{
+			"type":"bitmap",
+			"file":"uin:debug/cq_hb_1.png",
+			"height":96,
+			"ascent":96,
+			"chars":[
+				"\ud801\udc37"
+			]
+		}
+	]
+}[/code]
+
+
+
+
+[page]
+[b][size=5]与字体样式的互动[/size][/b]
+
+
+
+
+除了可以指定另一套字体的 font 以外，还有其他的字体样式
+[list]
+[*]color —— 颜色
+[*]font —— 字体
+[*]bold —— 粗体
+[*]italic —— 斜体
+[*]underlined —— 下划线
+[*]strikethrough —— 删除线
+[*]obfuscated —— 乱码
+[*]clickEvent —— 点击事件
+[*]hoverEvent —— 悬浮事件
+[/list]
+
+
+[img]https://z3.ax1x.com/2021/05/04/gnXYrT.png[/img]
+color 的处理应该等同于ps中的正片叠底。某些地方自带颜色可能导致最终显示的颜色不一，例如书本里的字，允许的话定义使用白色。
+bold 在往右偏移1像素点后的位置重复绘制一次该字体。
+italic 往右倾斜，目测14度。
+
+
+[img]https://z3.ax1x.com/2021/05/04/gnXUZF.png[/img]
+下划线和删除线保持原位
+
+
+[img]https://z3.ax1x.com/2021/05/04/gnXaa4.gif[/img]
+obfuscated 将从当前字体中随机抽选等宽字符并显示
+如果显示的位置渲染字体阴影，阴影也将另外随机抽选字符进行显示
+
+
+clickEvent 和 hoverEvent 的触发高度不变，宽度取决于贴图显示时的宽
+
+
+
+
+[page]
+[b][size=5]可显示的位置 & 渲染顺序[/size][/b]
+
+
+
+
+游戏里能显示字符的地方，就能改...能改的地方也太多了，这里先整理一下玩家屏幕。其他地方随缘。
+
+
+
+
+先是基本中的基本，不出所料任何地方，同一行字符的渲染顺序为[s]从???往???[/s]。可理解为图层，越后渲染的字符所在的图层就越高，也就越靠近你显示器[/s]
+
+版本差异，截至目前(不使用反向)测试所得到的结果
+测试方法为查看tellraw发送的字符在斜体样式下重叠部分的显示顺序
+1.13.2 | 从左往右
+1.14.4 | 从左往右
+
+1.15.2 | 从右往左
+1.16.4 | 从右往左 (optifine HD U G7 | 从左往右)
+1.16.5 | 从右往左 (optifine HD U G8 | 从左往右)
+1.17 | 从右往左
+
+这里提一嘴，大家注意一下就好
+反向空格的使用会导致其前的字符优先渲染(?)
+自己有一个重度使用反向的雷达数据/资源包，可能是全程使用了反向的原因，渲染顺序维持在左往右...
+[img]https://z3.ax1x.com/2021/06/15/2HETs0.png[/img]
+
+
+
+
+[b][size=4]屏幕区[/size][/b]
+[img]https://z3.ax1x.com/2021/06/15/2HZZAU.png[/img]
+渲染顺序（*粗体为使用阴影）
+版本差异，截至目前(不使用反向)测试所得到的结果
+1.16.5 | 成就提示 < [b]聊天栏[/b] < tab界面 < [b]title（main < sub）[/b] < [b]物品栏道具名称[/b] < [b]bossbar[/b] < sidebar < 音效字幕 < title actionbar < 经验值
+1.17 | 成就提示 < [b]聊天栏[/b] < tab界面 < [b]title（sub < main）[/b] < [b]物品栏道具名称[/b] < [b]bossbar[/b] < sidebar < 音效字幕 < title actionbar < 经验值
+
+
+
+
+[page]
+[b][size=5]反向空格[/size][/b]
+[url=https://github.com/AmberWat/NegativeSpaceFont]Github | 反向空格资源包[/url]
+[url=https://www.mcbbs.net/thread-1052254-1-1.html]资源包搬运 | 负空格字体黑科技 让json文本错位、堆叠显示[/url]
+
+
+
+
+由国外大神 AmberW#4615 根据特性所制作的资源包，作用是能使字符水平移动，适用于1.13往上，在地图制作者中广受好评。前期因为在Intel集显的情况下会导致游戏崩溃，因而别称显卡检测器，后来使用了另一个特性制作，所以在Intel下也能安心使用了。
+
+
+
+[b][size=4]反向入门[/size][/b]
+上面链接附带最基本的使用方法。提一嘴
+offset 不影响后续字体的渲染点
+space 影响(光标)后续字体的渲染点
+[img]https://z3.ax1x.com/2021/06/15/2Hn2CD.png[/img]
+
+
+
+
+[page]
+[b][size=5]默认字体的像素长度[/size][/b]
+
+
+
+
+除了字的本体外，末尾还会有个一像素的阴影，就算在不显示阴影的地方该长度仍然存在。
+以下数据为包括阴影长度的部分常用中英文字符。未列出的自行解决...
+
+
+
+
+
+[b]空格[/b] 4
+
+[b]0 ~ 9[/b] 6
+
+[b]A ~ Z[/b]（不包括I） 6
+[b]I[/b] 4
+
+[b]a ~ z[/b]（不包括 f k i l t） 6
+[b]f k[/b] 5
+[b]i[/b] 2
+[b]l[/b] 3
+[b]t[/b] 4
+
+[b]![/b] 2
+[b]?[/b] 6
+[b]#[/b] 6
+[b]$[/b] 6
+[b]%[/b] 6
+[b]&[/b] 6
+[b]@[/b] 7
+
+
+[b]( )[/b] 4
+[b][ ][/b] 4
+[b]{ }[/b] 4
+[b]< >[/b] 5
+
+
+[b]+[/b] 6
+[b]-[/b] 6
+[b]*[/b] 4
+[b]/[/b] 6
+[b]=[/b] 6
+
+
+[b], .[/b] 2
+[b]: ;[/b] 2
+[b]'[/b] 2
+[b]"[/b] 4
+
+[b]\[/b] 6
+[b]^[/b] 6
+[b]_[/b] 6
+[b]|[/b] 2
+[b]~[/b] 7
+
+[b]*切换到中文输入法时能打出来的字符，仅包括几个常用[/b]
+[b]汉字[/b]（大部分？不保证） 9
+[b]！[/b] 2
+[b]？[/b] 5
+[b]￥[/b] 6
+
+[b]（ ）[/b] 2
+[b]｛ ｝[/b] 3
+[b]《 》[/b] 9
+[b]【 】[/b] 9
+
+[b]，[/b] 2
+[b]。[/b] 9
+[b]：；[/b] 2
+[b]‘ ’[/b] 3
+[b]“ ”[/b] 5
+[b]、[/b] 9
+[b]…[/b] 8
+[b]—[/b] 9
+
+[b]1.18变动，使部分全角符号与汉字等宽
+上面所列出的中文符号中，以下符号宽度变为 9[/b][spoiler]
+！？
+（ ）
+｛ ｝
+，
+：；[/spoiler]
+
+
+
+
+当然写了一个（比较菜）方便判断长度的[url=https://github.com/ououn/minecraft/raw/master/resourcepacks/template/0_%E6%99%B4%E5%AE%9D%E5%B8%A6%E6%88%91%E9%A3%9E.zip]资源包[/url]，适用版本1.17。
+设置要求为
+视频 图像品质：最佳
+聊天 聊天文本大小：100%
+用法为肉眼判断发送到聊天栏上字体或字段的长度
+[code]tellraw @s "可以试着执行该指令查看是否有差错,此段无意外总长度将为256|"[/code]
+
+
+
+
+[page]
+[b][size=5]分数操作 动态调整偏移值[/size][/b]
+
+
+
+
+还有一种使用方法是通过分数定义偏移量，十分有用
+单个分数值所能偏移的范围为 -6764 ~ 25840, 不包括 0
+
+使用&例子讲解见[url=https://www.mcbbs.net/thread-1189571-1-1.html]自定义物品栏UI[/url]
+
+但是这离动态调整偏移值还差一步，因此抽空写了一个分数转换的函数方便各位使用
+*使用方法写在函数 _run 里了
+*里面还有一个 example 示例函数
+[attach]1821371[/attach]
+
+
+
+
+[page]
+[b][size=5]课外阅读，扩充一下自己的脑容量[/size][/b]
+
+
+
+[url=https://www.bilibili.com/video/BV194411t7Hm] [tryashtar] 字体黑科技 – 在MC里玩王国之心
+[url=https://www.mcbbs.net/thread-1243123-1-1.html] 1.13+ 舍去老版字体，来试试原版TTF字体吧！[/url]
+[url=https://www.mcbbs.net/thread-1189571-1-1.html] 反向空格应用篇之 - 自定义物品栏UI[/url]
+[url=https://www.bilibili.com/video/BV1SJ411P7Er?share_source=copy_web] 潜影盒内容预览 - 字体黑科技[/url]
+[url=https://www.youtube.com/watch?v=EL2X6ppZSCQ] 油管 - 教程 制作自定义魔法条[/url]
+
+
+
+
+etc. 以下为贴子编辑遗留下来的待确认/归类内容
+
+*[b]关于贴图文件的分辨率和游戏内显示的大小，见下一页[/b]
+*[url=https://github.com/ououn/minecraft/raw/master/resourcepacks/template/font_art.zip]这里有一个架设好bitmap的资源包供各位自行研究[/url]
+
+之后，游戏内能显示自定义unicode的地方都可以显示自己放进去的图片。但某些位置若超过允许的显示像素，轻则显示小白框重则崩溃。
+
+
+*大部分地方能显示的单字符最大分辨率为256x256
+*聊天设置>宽度拉满后，最大的贴图宽度仍不能超过聊天栏宽度或游戏窗口分辨率宽度附近
+*书本里单个字符最大的宽度为115像素，最大的高度为256像素(?)
+
+
+separator
+https://www.minecraft.net/es-es/article/minecraft-snapshot-21w15a
+
+
+
+<h3>相关时间线<br>
+                            ——1.6 | unicode 字体可通过材质包 unicode_page_xx 进行修改<br>
+                            ——1.13 | 通过自定义default.json，能更好地修改现有字体<br>
+                            ——1.16 | 可以定义多套字体<br>
+                            ————color允许使用十六进制RGB值<br>
+                            ————支持所有Unicode字符，使其可支持键入Emoji和位于基本多文种平面（BMP）外的Unicode字符<br>
+                            ——1.17 | 新增 separator<br>
+                            ——1.18 | MC-109260 使汉字中的全角符号与汉字等宽
+                        </h3>
