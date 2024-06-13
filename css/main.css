@@ -390,6 +390,11 @@ img#current-logo-top {
   display: none;
 }
 
+#main-content article {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    user-select: text;
+}
 .clickstionable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
