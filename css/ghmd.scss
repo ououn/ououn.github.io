@@ -19,5 +19,46 @@
     color: #363636;
 }
 
+/////////////////
 
-///.hljs-attr  3249C8  556BE8
+.simp-imgbox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    .simp-imgbox-entry {
+        position: relative;
+        max-width: calc( 100% / 2 - 0.5em );
+        display: block;
+        width: fit-content;
+        margin: 0.2em 0.25em;
+    }
+    .simp-imgbox-img {
+        display: block;
+        margin: auto;
+        border-radius: 5px;
+    }
+    .simp-imgbox-name {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        position: absolute;
+        bottom: 0;
+        max-width: calc( 100% - 1em );
+        color: white;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        text-align: left;
+        margin: 0 0.5em;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .simp-imgbox-entry {
+        max-width: calc( 100% ) !important;
+    }
+}
+
+@media only screen and (min-width: calc(1400px + 270px)) {
+    .simp-imgbox-entry {
+        max-width: calc( 100% /3 - 1em ) !important;
+    }
+}

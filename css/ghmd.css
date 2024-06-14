@@ -17,4 +17,46 @@
 
 .hljs-string {
   color: #363636;
+}
+
+.simp-imgbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.simp-imgbox .simp-imgbox-entry {
+  position: relative;
+  max-width: calc(50% - 0.5em);
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0.2em 0.25em;
+}
+.simp-imgbox .simp-imgbox-img {
+  display: block;
+  margin: auto;
+  border-radius: 5px;
+}
+.simp-imgbox .simp-imgbox-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 0;
+  max-width: calc(100% - 1em);
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-align: left;
+  margin: 0 0.5em;
+}
+
+@media only screen and (max-width: 920px) {
+  .simp-imgbox-entry {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 1670px) {
+  .simp-imgbox-entry {
+    max-width: calc(33.3333333333% - 1em) !important;
+  }
 }/*# sourceMappingURL=ghmd.css.map */

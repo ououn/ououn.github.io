@@ -3,14 +3,36 @@
 在我的世界Java版1.13更新的命令格式大巨变之余，官方还悄咪咪地添加了这么一个小功能。使制作者可以通过资源包修改所使用的字体，或是指定某个字符显示时所使用的贴图。听着朴实无华，实则是方块人发现了新大陆。
 字符所能显示之处皆是潜在的照片展示框。
 
-<details>
+<details open>
 <summary>使用效果</summary>
-<img src="https://z3.ax1x.com/2021/05/04/gnXtqU.png" width="100%" title="BNA by BlackCB. —— https://www.mcbbs.net/thread-1088676-1-1.html">
-<img src="https://z3.ax1x.com/2021/05/04/gnXrxx.gif" width="100%" title="组坑 by 像素立方 —— https://www.mcbbs.net/thread-934989-1-1.html">
-<a href="https://www.bilibili.com/video/BV16K411g7sm"><img src="https://z3.ax1x.com/2021/05/04/gnX0i9.png" width="100%" title="蘑菇秘境Ⅱ by MILENARY"></a>
-<a href="https://www.youtube.com/watch?v=ZoIXD0Tz6qE"><img src="https://z3.ax1x.com/2021/05/04/gnXBGR.png" width="100%" title="国外地图 哈利波特 by The Floo Network"></a>
-<img src="https://z3.ax1x.com/2021/05/04/gnXDR1.png" width="100%" title="MineClub 服务器">
-<img src="https://z3.ax1x.com/2021/06/15/2HuGMd.png" width="100%" title="by Nabbie#9286">
+
+<div class="simp-imgbox">
+    <a class="simp-imgbox-entry" href="https://www.bilibili.com/video/BV16K411g7sm">
+        <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnX0i9.png">
+        <p class="simp-imgbox-name">蘑菇秘境Ⅱ by MILENARY</p>
+    </a>
+    <a class="simp-imgbox-entry">
+        <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnXrxx.gif">
+        <p class="simp-imgbox-name">组坑 by 像素立方 — https://www.mcbbs.net/thread-934989-1-1.html</p>
+    </a>
+    <a class="simp-imgbox-entry">
+        <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnXtqU.png">
+        <p class="simp-imgbox-name">BNA by BlackCB. — https://www.mcbbs.net/thread-1088676-1-1.html</p>
+    </a>
+    <a class="simp-imgbox-entry">
+        <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/06/15/2HuGMd.png">
+        <p class="simp-imgbox-name">by Nabbie#9286</p>
+    </a>
+    <a class="simp-imgbox-entry">
+        <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnXDR1.png">
+        <p class="simp-imgbox-name">MineClub 服务器</p>
+    </a>
+    <a class="simp-imgbox-entry" href="https://www.youtube.com/watch?v=ZoIXD0Tz6qE">
+        <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnXBGR.png">
+        <p class="simp-imgbox-name">国外地图 哈利波特 by The Floo Network</p>
+    </a>
+</div>
+
 </details>
 
 接下来是（**主要围绕bitmap的**）教程和相关资料，不带废话，因此要求读者对资源包有一定的了解。
@@ -122,7 +144,7 @@
 ````
 
 - type —— 字体类型
-- file —— png文件位置。以 assets/<[i]namespace[/i]>/textures/ 起
+- file —— png文件位置
 	- 上面为例，则应有贴图文件 assets/uin/textures/debug/page1_256x.png
 - height —— 字符在游戏中显示的像素高度。选填，默认为8
     - 可以为负值，图片将反向缩放，同时影响后续字体的渲染位置
@@ -134,6 +156,7 @@
 
 </details>
 
+***
 
 <h1>剩下的有空补上...另外该文的创建时间跨度较大，存在错误或建议望指正 谢谢各位</h1>
 
