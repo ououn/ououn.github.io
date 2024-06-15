@@ -41,7 +41,7 @@
 
 ***
 
-<a id="to2"><h2>基本制作流程</h2></a>
+<a id="to2"><h3>基本制作流程</h3></a>
 
 1. 资源包 assets\minecraft\font 位置下新建文件 default.json
 	- 命名为 default 则为游戏默认使用的字体配置，资源包加载后便会立刻适用
@@ -50,11 +50,10 @@
 3. 根据 json 内填写的路径放入所需的文件
 4. 选用资源包并确保 强制使用Unicode字体 为 关
 
+<hr class="slim-hr">
 
 <h3>Json 内容 & 解释</h3>
-自定义字体的类型目前支持以下三种：ttf，legacy_unicode，bitmap。按需选一，可混搭
-
-
+自定义字体的类型目前支持以下三种：ttf，legacy_unicode，bitmap。按需选一，可混搭<br><br>
 
 <details><summary>ttf —— True Type Font | 电脑中主流的字体格式。游戏目前不使用ttf字体，但可以通过资源包启用</summary>
 
@@ -85,6 +84,7 @@
 
 ![](https://s2.ax1x.com/2019/12/27/lZmjP0.png)
 
+<hr class="exslim-hr">
 </details>
 
 
@@ -113,6 +113,7 @@
 *通过这种方法制作多套字体还是可以的，和以前改unicode_page一样，没什么特别要提到的，因此不过多介绍<br>
 因为只在 强制使用Unicode 开启时才会优先使用，所以若该字在 bitmap 中也有定义，可以做到开启 强制使用 时显示这一套，而关闭时显示隔壁那套
 
+<hr class="exslim-hr">
 </details>
 
 

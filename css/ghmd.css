@@ -2,6 +2,28 @@
   background-color: transparent;
   color: black;
 }
+.markdown-body hr {
+  height: 0px;
+}
+.markdown-body hr.slim-hr {
+  height: 1px;
+  border: 0px !important;
+  margin-left: 1em !important;
+  margin-right: 1.5em !important;
+}
+.markdown-body hr.exslim-hr {
+  height: 1px;
+  border: 0px !important;
+  margin-left: 5em !important;
+  margin-right: 5.5em !important;
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  font-family: "mainFont";
+  font-weight: 400;
+}
+.markdown-body h3 {
+  font-size: 1.5em;
+}
 
 .markdown-body pre {
   background-color: #C6CADE;
