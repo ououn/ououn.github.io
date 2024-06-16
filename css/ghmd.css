@@ -1,6 +1,36 @@
+@charset "UTF-8";
 .markdown-body {
   background-color: transparent;
   color: black;
+}
+.markdown-body ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+.markdown-body ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+.markdown-body ul ul, .markdown-body ol ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 15px;
+}
+.markdown-body ol ol, .markdown-body ul ol {
+  list-style-type: lower-latin;
+  list-style-position: inside;
+  margin-left: 15px;
+}
+.markdown-body summary {
+  list-style-position: inside;
+  margin-left: 15px;
+}
+.markdown-body details > summary:before {
+  padding-right: 1em;
+  content: "⦿";
+}
+.markdown-body details[open] > summary:before {
+  content: "⦾";
 }
 .markdown-body hr {
   height: 0px;
