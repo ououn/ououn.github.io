@@ -67,7 +67,7 @@
   color: #2E5AFF;
 }
 
-.hljs-string {
+.hljs-subst, .hljs-string {
   color: #363636;
 }
 

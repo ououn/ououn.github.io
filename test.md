@@ -151,11 +151,51 @@
     - 可以为负值，图片将反向缩放，同时影响后续字体的渲染位置
 - ascent —— 字符在游戏中往上偏移的像素点
     - 该值不能高于height值
-- chars —— 该贴图所包含的字符，可填万国码如示例也可以直接填写目标字符。填写 \u0000 则不读取该位
+- chars —— 该贴图所包含的字符
+    - 可填万国码如示例也可以直接填写目标字符
+    - 填写 \u0000 则在贴图切割分配给字符时，忽略该位置
 
 ![](https://s2.ax1x.com/2019/12/27/lZnHSK.png)
 
 </details>
+
+<hr class="slim-hr">
+
+<h3>显示字符</h3>
+在字体配置文件为 default.json 的情况下，字符会自动显示自定义的字符。也可以在允许输入 json 文本的地方以万国码的方式显示字符。<br><br>
+
+````
+#Tellraw & Title
+tellraw @p "\ue001\ue002"
+tellraw @p [{"text":"\ue001\ue002"}]
+title @p title [{"text":"\ue001"}]
+
+#Name/Lore
+give @p pufferfish{display:{Name:'{"text":"\\ue001"}',Lore:['{"text":"\\ue002"}']}} 1
+
+#CustomName
+#1.13   summon armor_stand ~ ~ ~ {CustomName:"{\"text\":\"\\ue001\"}",CustomNameVisible:1b}
+#1.14   summon armor_stand ~ ~ ~ {CustomName:'{"text":"\\ue001"}',CustomNameVisible:1b}
+````
+
+
+修改好的字体在实际应用前往往需要进行偏移甚至是重叠，而这原本是做不到的，直到一个字体相关的bug被发现(见后)...再后来官方出手相助
+
+<br>
+
+***
+
+<a id="to3"><h3>chars ascent height</h3></a>
+
+- chars - 分配贴图到字符时的划分方式
+- ascent - 渲染时字符垂直偏移于渲染线的像素距离
+- height - 字符在游戏里显示时的像素高度
+    - 文本在不同的地方进行渲染时，像素单位可能存在差异，如 title 和 subtitle
+
+![](https://s2.ax1x.com/2020/02/16/3pxjYV.png)
+![](https://s2.ax1x.com/2020/02/16/3pxLoq.png)
+![](https://s2.ax1x.com/2020/02/16/3pxXF0.png)
+
 
 ***
 
