@@ -415,6 +415,8 @@ img#current-logo-top {
 @media only screen and (max-width: 920px) {
   img#current-logo-top {
     content: url("../images/tmp/mecube_outline.svg");
+    width: 60px;
+    height: 60px;
   }
   body div#wrapper {
     padding-left: 0;
@@ -437,6 +439,9 @@ img#current-logo-top {
   #main-content {
     width: 100vw;
     padding-right: 20px;
+  }
+  footer {
+    font-size: 11px;
   }
 }
 #testBtn {
