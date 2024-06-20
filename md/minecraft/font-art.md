@@ -15,9 +15,9 @@
         <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnXrxx.gif">
         <p class="simp-imgbox-name">组坑 by 像素立方 — https://www.mcbbs.net/thread-934989-1-1.html</p>
     </a>
-    <a class="simp-imgbox-entry">
+    <a class="simp-imgbox-entry" href="https://www.bilibili.com/video/av201570404/">
         <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/05/04/gnXtqU.png">
-        <p class="simp-imgbox-name">BNA by BlackCB. — https://www.mcbbs.net/thread-1088676-1-1.html</p>
+        <p class="simp-imgbox-name">BNA by BlackCB.</p>
     </a>
     <a class="simp-imgbox-entry">
         <img class="simp-imgbox-img" src="https://z3.ax1x.com/2021/06/15/2HuGMd.png">
