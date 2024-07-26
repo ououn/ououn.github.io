@@ -196,6 +196,58 @@ give @p pufferfish{display:{Name:'{"text":"\\ue001"}',Lore:['{"text":"\\ue002"}'
 ![](https://s2.ax1x.com/2020/02/16/3pxLoq.png)
 ![](https://s2.ax1x.com/2020/02/16/3pxXF0.png)
 
+<br>
+
+***
+
+<a id="to4"><h3>箱子UI / 菜单栏</h3></a>
+
+全局性修改的话除了老办法直接糊箱子的贴图，也可以修改资源包lang文件夹下所有语言的该翻译词条，使该翻译带有先前自定义的字体字符。
+
+翻译词条的优点是可以使贴图超出原本箱子贴图以外的范围（菜单栏的修改同样使用该方法）<br>
+下图为例， **\UF808** 为反向空格的偏移字段，此处作用为把文本打印起始点往左偏移8像素点。<br>
+**§F** 则是为字体着白色，以维持后续字体的颜色。例如下面的Inventory默认就被糊了灰色。其他地方也会有为字体默认糊色的情况，比如书本内的字体会糊黑色，注意一下。<br>
+最后的 **\U002B** (自定义字符"+")就是此次显示的图片。
+
+![](https://z3.ax1x.com/2021/11/26/oVno5V.png)
+
+由于被命名的箱子在打开时左上角会显示其命名，因此可以做到特定箱子显示特定UI。
+
+````
+give @s chest{display:{Name:'{"color":"white","text":"\\UF808\\u002B"}'}}
+give @s chest{display:{Name:'[{"translate":"space.-8","color":"white"},"+"]'}}
+give @s chest{display:{Name:'{"translate":"custom.container.chest"}'}}
+````
+
+<br>
+
+***
+
+<a id="to5"><h3>书</h3></a>
+
+待补充...<br>
+
+<br>
+
+***
+
+<a id="to999"><h3>相关链接</h3></a>
+
+- 教程/介绍
+    - <a href="https://zh.minecraft.wiki/w/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93" target="_blank">[自定义字体]</a>
+    - <a href="https://www.bilibili.com/read/cv8362858/" target="_blank">[为什么我们能看到汉字？]</a>
+    - <a href="https://www.youtube.com/watch?v=EL2X6ppZSCQ" target="_blank">[油管 - 制作自定义魔法条的教程]</a>
+- 思路/讲解
+    - <a href="https://www.bilibili.com/video/BV194411t7Hm" target="_blank">[字体黑科技 – 在MC里玩王国之心]</a>
+    - <a href="https://www.bilibili.com/video/BV1SJ411P7Er" target="_blank">[字体黑科技 —— 潜影盒内容预览]</a>
+    - <a href="https://www.bilibili.com/video/BV1Qy4y1b7GV" target="_blank">[MC黑科技自定义物品栏-反向空格应用篇]</a>
+- 工具
+    - <a href="https://github.com/AmberWat/NegativeSpaceFont" target="_blank">[反向空格资源包]</a>
+    - <a href="https://github.com/PuckiSilver/NoShadow" target="_blank">[着色器 移除文本阴影]</a>
+    - <a href="https://github.com/VisiVersa/Common-Shaders?tab=readme-ov-file#text-offsets-through-color" target="_blank">[着色器 根据屏幕比例偏移文本]</a>
+    - <a href="https://github.com/sch246/MCunicode" target="_blank">[MCunicode字体放缩 - 将我的世界的unicode字体格式转化为bitmap格式，并且进行放缩的资源包]</a>
+
+<br>
 
 ***
 

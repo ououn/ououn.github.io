@@ -28,9 +28,10 @@
 .markdown-body details > summary:before {
   padding-right: 1em;
   content: "⦿";
+  color: #199E95;
 }
 .markdown-body details[open] > summary:before {
-  content: "⦾";
+  content: "⍝";
 }
 .markdown-body hr {
   height: 0px;
@@ -56,11 +57,19 @@
 }
 
 .markdown-body pre {
-  background-color: #C6CADE;
+  background-color: #d2daff;
 }
 
 .hljs {
-  color: #595959;
+  color: #3f3f41;
+}
+
+.hljs-operator, .hljs-meta {
+  color: #1d33f3;
+}
+
+.hljs-type {
+  color: #c94d05;
 }
 
 .hljs-attr, .hljs-number {
