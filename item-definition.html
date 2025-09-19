@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minecraft - NUOUO</title>
+        <link rel="icon" href="./images/tmp/mecube_outline.svg" type="image/x-icon">
+        
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+        <!--script src="./js/from_others/jquery.ui.touch-punch.min.js"></script-->
+        <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/main.css">
+
+        <script src="./js/main.js"></script>
+    </head>
+    
+    <!-- <body class="clickstionable" oncontextmenu="return false"> -->
+    <body class="clickstionable" onmouseup="onScrollSmooth(event)">
+
+        <div id="wrapper">
+
+            <div id="categories">
+                <div id="spacer-1"></div>
+                <ul id="category-list">
+                    <li><a class="category" href="./minecraft.html"><img src="./images/tmp/creeper.svg" draggable="false"><span>minecraft</span></a></li>
+                    <li><a class="category" href="./404.html"><img src="./images/tmp/na.svg" draggable="false"><span>n/a</span></a></li>
+                    <li><a class="category" href="./404.html"><img src="./images/tmp/na.svg" draggable="false"><span>n/a</span></a></li>
+                </ul>
+            </div>
+
+            <a href="./index.html"><img id="current-logo-top" alt="current logo float" width="80" height="80" draggable="false"></a>
+            <div id="current">
+                <div id="current-cat">
+                    <img id="current-logo" alt="current category" src="./images/tmp/mecube_outline.svg" draggable="false">
+                    <div id="current-title">mcmap maker 101</div>
+                </div>
+
+                <div class="wrapper-artbox">
+                    <nav class="articles-menu">
+                        
+                        <ul class="articles-type"><a class="underline-hover" href="#to1">简介</a>
+                            <li class="article"><a class="underline-hover" href="#to2">获取物品</a></li>
+                            <li class="article"><a class="underline-hover" href="#to3">定义方式</a>
+                            <li class="article"><a class="underline-hover" href="#to4">- 模型</a></li>
+                            <li class="article"><a class="underline-hover" href="#to5">- 特殊模型</a></li>
+                            <li class="article"><a class="underline-hover" href="#to6">- 组合渲染</a></li>
+                            <li class="article"><a class="underline-hover" href="#to7">- 属性判断（布尔值）</a></li>
+                        </ul>
+                        <ul class="articles-type"><a class="underline-hover" href="#to5">格式框架</a>
+                            <li class="article"><a class="underline-hover" href="#to6">model</a></li>
+                            <li class="article"><a class="underline-hover" href="#to7">composite</a></li>
+                            <li class="article"><a class="underline-hover" href="#to8">condition</a></li>
+                            <li class="article"><a class="underline-hover" href="#to9">select</a></li>
+                            <li class="article"><a class="underline-hover" href="#to10">range_dispatch</a></li>
+                        </ul>
+
+                    </nav>
+                </div>
+
+                <ul id="contact-icon">
+                    <li><a href="https://discordapp.com/users/230535865103941632"><img src="./images/fa_icon/discord.svg" alt="discord" draggable="false"></a></li>
+                    <li><a href="https://twitter.com/_nuouo"><img src="./images/fa_icon/twitter.svg" alt="twitter" draggable="false"></a></li>
+                </ul>
+            </div>
+
+            <div class="main-page">
+                <div id="main-page-header"></div>
+
+                <div id="main-content">
+
+                    <div id="gallery-box"></div>
+                    <!--hr class="divider"-->
+
+                    <article>
+                        <a id="to1" class="post-title"><h1>物品定义 - 物品模型格式的大巨变</h1></a><br><hr class="big-hr">
+                        <zero-md src="/md/minecraft/item-definition.md" no-shadow><template data-append><link rel="stylesheet" href="./css/ghmd.css" /></template></zero-md>
+                    </article>
+
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            Made by me ofc ©2024 NUOUO STUDIO. All rights reserved.
+            <div>    
+                <div id="lowerMe"></div>
+                <div id="upperMe"></div>
+            </div>
+        </footer>
+
+        <div id="scroll">
+            <!--<div id="scroll-fill"></div>-->
+            <div id="scroll-thumbparts">
+                <div id="scroll-drag" oncontextmenu="return true" ondragstart="offScrollSmooth(event)"></div>
+                <div id="scroll-thumb"></div>
+            </div>
+        </div>
+
+    </body>
+</html>
